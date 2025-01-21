@@ -1,22 +1,20 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Clone Repository') {
             steps {
-                echo 'Building...'
-                sh 'echo Build complete!'
+                git 'https://github.com/username/repository.git' // Replace with your repo URL
             }
         }
-        stage('Test') {
+        stage('Compile') {
             steps {
-                echo 'Testing...'
-                sh 'echo Tests Passed!'
+                sh 'gcc -o program program.c'
             }
         }
-        stage('Deploy') {
+        stage('Run') {
             steps {
-                echo 'Deploying...'
-                sh 'echo Deployment successful!'
+                sh './program'
             }
         }
     }
